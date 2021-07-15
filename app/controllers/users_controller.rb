@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     end  
     # unless @user == current_user
     #   redirect_to  user_path(@user.id)
-    # end
+    # end 上記に
   end
 
   def update
