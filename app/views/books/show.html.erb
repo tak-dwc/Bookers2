@@ -5,9 +5,14 @@
 <table>
     <tbody>
    <tr>
-    <td><%= @books.title %></td>
-    <td><%= @books.body %></td>
-    <td><%= link_to "Edit",edit_book_path(@books.id) %></td>
-    <td><%= link_to "Destroy",book_path(@books),method: :delete %></td>
+      <td><%= @books.title %></td>
+      <td><%= @books.body %></td>
+    <% if@user.id == current_user.id %>
+      <td><%= link_to "Edit",edit_book_path(@books.id) %></td>
+      <td><%= link_to "Destroy",book_path(@books),method: :delete %></td>
+    <% else %>
+      <td></td>
+      <td></td>
+    <% end %>
    </tr>
 </table>
