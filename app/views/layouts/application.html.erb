@@ -4,7 +4,7 @@
     <title>Bookers2</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -13,14 +13,13 @@
     <%# flash.each do |key, value| %>
     <%#= content_tag(:div, value, class: "#{key}") %>
     <%# end %>
-    
-     <p class="notice"><%= notice %>
-
-     <p class="alert"><%= alert %>
-    
-    <h2>Bookers</h2>
-    
-    <% if user_signed_in? %>
+   <header>
+     <nav class=""></nav>
+    <a href="/">Bookers</a>
+  
+  
+  
+     <% if user_signed_in? %>
       <li>
         <%= link_to "Home", user_path(current_user) %> 
       </li>
@@ -34,7 +33,7 @@
         <%= link_to "logout", destroy_user_session_path, method: :delete %>
       </li> 
       
-    <%else%>
+     <%else%>
     　<li>
         <%= link_to "Home", "/" %>
       </li>
@@ -47,9 +46,18 @@
       <li>
         <%= link_to "login", new_user_session_path %>
       </li>
-    <% end %>
+     <% end %>
     
-    <%= yield %>
+     <%= yield %>
+     </nav>
+     </header>
+     
+     <main>
+      <p class="notice"><%= notice %>
+
+      <p class="alert"><%= alert %>
+    
+     </main>
   </body>
   
 </html>
