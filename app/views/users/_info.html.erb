@@ -1,14 +1,17 @@
 <h2>User info</h2>
-<%= attachment_image_tag user, :profile_image, :fill, 100, 100 ,fallback: "no_image.jpg" %>
-<table>
+<%= attachment_image_tag user, :profile_image, :fill, 80, 80 ,fallback: "no_image.jpg" %>
+<table class="table">
+  <tr></tr>
   <tr>
-    <td>name</td>
-    <td><%= user.name %></td>
+    <th>name</th>
+    <th><%= user.name %></th>
   </tr>
   <tr>
-    <td>introduction</td>
-    <td><%= user.introduction %></td>
+    <th>introduction</th>
+    <th><%= user.introduction %></th>
   </tr>
 </table>
 
-<%=link_to "edit info",edit_user_path(user.id) %>
+<div class="row">
+<%=link_to"", edit_user_path(user.id), class:"btn btn-outline-secondary btn-block fas fa-user-cog" %>
+</div>
