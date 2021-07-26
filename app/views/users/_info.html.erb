@@ -20,7 +20,17 @@
   </tr>
 
 </table>
-
+<%unless user == current_user %>
+<div class="row">
+<% if current_user.following?(user) %>
+   <%=link_to "UnFollow",user_relationships_path(user.id),method: :delete ,class: "btn btn-sm btn-info"%>
+<% else %>
+    <%=link_to "Follow",user_relationships_path(user.id),method: :post ,class: "btn btn-sm btn-info"%>
+<% end %>  
+</div>
+<% else %>
 <div class="row">
 <%=link_to"", edit_user_path(user.id), class:"btn btn-outline-secondary btn-block fas fa-user-cog" %>
 </div>
+
+<% end %>
