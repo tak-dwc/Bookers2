@@ -61,12 +61,20 @@
      <main>
      <p class="text-success",id="notice"><%= notice %>
       <p class="text-danger" ,id="alert"><%= alert %>
-      <%= form_with url: search_path, method: :get,local: true do |f| %>
-      <%= f.text_field 'seach[value]' %>
-      <%= f.select 'seach[model]',options_for_select({"User" => "user","Book" => "book"}) %>
-      <%= f.select 'search[how]' ,options_for_select({"完全一致"=>"perfect","前方一致"=>"forward","後方一致"=>"backward","部分一致"=>"partical"}) %>
-      <%= f.submit :"検索" %>
-      <% end %>
+    <div class="container">  
+    <div class="row">
+     <div class="mx-auto">
+      <% if user_signed_in? %>
+       <%= form_with url: search_path, method: :get,local: true do |f| %>
+       <%= f.text_field 'search[value]',placeholder:"キーワードを入力" %>
+       <%= f.select 'search[model]',options_for_select({"User" => "user","Book" => "book"}),include_blank:"選択" %>
+       <%= f.select 'search[how]' ,options_for_select({"完全一致"=>"perfect","前方一致"=>"forward","後方一致"=>"backward","部分一致"=>"partical"}),include_blank:"選択"%>
+       <%= f.submit :"検索" %>
+       <% end %>
+      <% end %>  
+     </div>
+    </div>
+    </div>
       <%= yield %>
      </main>
 

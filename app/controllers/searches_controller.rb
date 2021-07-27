@@ -1,10 +1,12 @@
 class SearchesController < ApplicationController
   def search
     @value = params["search"] ["value"]
-    @model = params["search"]["model"]
-    @how =   params["search"]["how"]
-    @data = search_for(@how,@model,@)
+    @model = params["search"] ["model"]
+    @how =   params["search"] ["how"]
+    @data = search_for(@how, @model, @value)
   end
+   
+  private
   
   def perfect(model, value)
     if model =='user'
@@ -16,25 +18,25 @@ class SearchesController < ApplicationController
   
   def forward(model, value)
     if model == 'user'
-      User.where("name LIKE ?","# {value} % ")
+      User.where("name LIKE ?","#{value}%")
     elsif model == 'book'
-      Book.where("title LIKE ?","# {value} % ")
+      Book.where("title LIKE ?","#{value}%")
     end  
   end  
   
   def backward(model, value)
     if model =='user'
-      User.where("name LIKE ?","# % {value} ")
+      User.where("name LIKE ?","%#{value}")
     elsif model == 'book'
-      Book.where("title LIKE ?","# % {value} ")
+      Book.where("title LIKE ?","%#{value}")
     end  
   end  
   
   def partical(model, value)
     if model =='user'
-      User.where("name LIKE ?","# % {value} % ")
+      User.where("name LIKE ?","%#{value}%")
     elsif model == 'book'
-      Book.where("title LIKE ?","# % {value} % ")
+      Book.where("title LIKE ?","%#{value}%")
     end  
   end  
   
