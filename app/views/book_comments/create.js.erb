@@ -1,4 +1,4 @@
-$('#comments_<%= @book.id %>').html("<%= j(render 'book_comments/comments',book: @book) %>");
 $('#comment_area').html("<%= j(render 'book_comments/form', book: @book,book_comment: @comment) %>");
 $("textarea").val('');
+$('#comments_<%= @book.id %>').html("<%= j(render 'book_comments/comments',book: @book) %>");
 
