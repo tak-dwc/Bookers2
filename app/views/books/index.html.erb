@@ -15,7 +15,9 @@
      <th></th>
      <th>Title</th>
      <th>Opinion</th>
-     <th colspan="3"></th>
+     <th>Favorite</th>
+     <th>Comment</th>
+     <th>Pv</th>
    </tr>
   </thead>
 
@@ -37,6 +39,8 @@
     <td id="comments_<%=book.id%>">
      <%= render 'book_comments/comments',book: book,book_comment: @comment %>
     </td>
+    
+    <td>Pv:<%=  book.impressionist_count %></td>
    
    
   </tr>
