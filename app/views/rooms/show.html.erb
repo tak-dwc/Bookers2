@@ -1,0 +1,32 @@
+
+<h1><%= @another_entry.user.name%>さんとのchat</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>ユーザー名</th>
+            <th>内容</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if @messages.present? %>
+        <% @messages.each do |message| %>
+            <tr>
+                <td><%= message.user.name %></td>
+                <td><%= message.content %></td>
+            </tr>
+        <% end %>
+        <% end %>
+    </tbody>
+</table>
+
+
+
+<%= form_with model: @message, local: true do |f| %>
+    <%= f.text_field :content %>
+    <%= f.hidden_field :room_id, :value => @room.id %>
+    <%= f.submit %>
+<% end %>
+
+
+<%= link_to "ユーザー一覧に戻る", user_path(current_user) %>

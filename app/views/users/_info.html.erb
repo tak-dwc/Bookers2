@@ -32,6 +32,20 @@
 <div class="row">
 <%=link_to"", edit_user_path(user.id), class:"btn btn-outline-secondary btn-block fas fa-user-cog" %>
 </div>
-
-
 <% end %>
+<div class="row">
+<% if @user.id != current_user.id %>
+ <% if (current_user.following? @user) && (@user.following? current_user)  %>
+  <% if @isRoom == true %>
+   <%=link_to "chatを始める",room_path(@roomId)%>
+  <% else %>
+    <%= form_with model: @room do |f| %>
+      <%= fields_for @entry do |e| %>
+      <%= e.hidden_field :user_id, value: @user.id %>
+      <% end %>
+    <%= f.submit "chatを始める" %>
+    <% end %>
+  <% end %>
+ <% end %>
+<% end %>
+</div>
