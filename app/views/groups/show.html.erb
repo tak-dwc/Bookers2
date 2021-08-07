@@ -1,7 +1,7 @@
 <div class="container px-5 px-sm-0">
 <div class="row">
   <div class="col-md-3">
-   <%= render 'users/info', user: @user %>
+   <%= render 'users/info', user: current_user %>
    <%= render 'books/new', book: @book %>
 </div>
 
@@ -9,7 +9,7 @@
       <h2>Group Detail</h2>
       <table class='table table-hover table-inverse'>
         <tr>
-          <td><%= attachment_image_tag(@group, :image, :fill, 50, 50, fallback: "no-image-icon.jpg") %></td>
+          <td><%= attachment_image_tag @group, :image, fallback: "no_image.jpg",size:"50x60" %></td>
           <td><%= @group.name %></td>
           <td><%= @group.introduction %></td>
           <td>
