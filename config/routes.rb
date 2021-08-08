@@ -13,6 +13,8 @@ Rails.application.routes.draw do
    end  
   resources :groups do
    get "join" => "groups#join"
+   get "new/mail" => "groups#new_mail"
+    get "send/mail" => "groups#send_mail"
   end
   
   resources :messages,only: [:create]
